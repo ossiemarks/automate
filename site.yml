@@ -1,2 +1,11 @@
-#Test file for the hosts
-192.168.10.11 webserver
+---
+- hosts: local
+  tasks:
+   - name: Install Nginx
+     apt: pkg=nginx state=installed update_cache=true
+     notify:
+      - Start Nginx
+
+  handlers:
+   - name: Start Nginx
+     service: name=nginx state=started
