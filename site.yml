@@ -1,2 +1,16 @@
+<<<<<<< HEAD
 #test file to configure some hostnames
 192.168.0.11 webserver
+=======
+---
+- hosts: local
+  tasks:
+   - name: Install Nginx
+     apt: pkg=nginx state=installed update_cache=true
+     notify:
+      - Start Nginx
+
+  handlers:
+   - name: Start Nginx
+     service: name=nginx state=started
+>>>>>>> 0a1f86ef336d7d558d76e434d2cc4a0489d8f54f
