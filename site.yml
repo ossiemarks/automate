@@ -1,16 +1,17 @@
-<<<<<<< HEAD
-#test file to configure some hostnames
-192.168.0.11 webserver
-=======
+# playbook.yml
 ---
-- hosts: local
+- hosts: all
   tasks:
-   - name: Install Nginx
-     apt: pkg=nginx state=installed update_cache=true
-     notify:
-      - Start Nginx
+    - name: 1. install Apache
+      apt: name=apache2 state=present
 
-  handlers:
-   - name: Start Nginx
-     service: name=nginx state=started
->>>>>>> 0a1f86ef336d7d558d76e434d2cc4a0489d8f54f
+    - name: 2. install PHP module for Apache
+      apt: name=libapache2-mod-php5 state=present
+
+    - name: 3. start Apache
+      service: name=apache2 state=running enabled=yes
+
+    - name: 4. install Hello World PHP script
+      copy: src=index.php dest=/var/www/index.php mode=0664
+
+
