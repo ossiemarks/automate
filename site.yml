@@ -12,6 +12,3 @@
       service: name=apache2 state=running enabled=yes
 
     - name: install Hello World PHP script
-      copy: src=index.php dest=/var/www/index.php mode=0664
-
-

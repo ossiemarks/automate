@@ -1,5 +1,5 @@
 FROM ubuntu
- MAINTAINER yourname
+ MAINTAINER ossiemarks
  RUN apt-get -y update
  RUN apt-get install -y python-yaml python-jinja2 git
  RUN git clone http://github.com/ansible/ansible.git /tmp/ansible
