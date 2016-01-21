@@ -10,6 +10,8 @@
  RUN git clone http://github.com/ossiemarks/automate.git /tmp/example
  ADD inventory /etc/ansible/hosts
  WORKDIR /tmp/example
+ RUN ssh-keyscan -t rsa 127.0.0.1 >>/root/.ssh/known_hosts
+ RUN cat /root/.ssh/id_rsa.pub >>/root/.ssh/authorized_keys 
  RUN ansible-playbook -v site.yml -c local
  EXPOSE 22 3000
  ENTRYPOINT [“/usr/bin/bash”]
