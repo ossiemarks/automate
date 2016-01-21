@@ -10,6 +10,6 @@
  RUN git clone http://github.com/ossiemarks/automate.git /tmp/example
  ADD inventory /etc/ansible/hosts
  WORKDIR /tmp/example
- RUN ansible-playbook site.yml -c local
+ RUN ansible-playbook -v site.yml -c local
  EXPOSE 22 3000
  ENTRYPOINT [“/usr/bin/bash”]
