@@ -9,7 +9,7 @@ FROM ubuntu
  ENV PYTHONPATH /tmp/ansible/lib:$PYTHON_PATH
  RUN git clone http://github.com/ossiemarks/automate.git /tmp/example
  ADD inventory /etc/ansible/hosts
- WORKDIR /tmp/examples
- RUN ansible-playbook site.yml -c local
+ WORKDIR /tmp/example
+ RUN ansible-playbook -v site.yml -c local
  EXPOSE 22 3000
  ENTRYPOINT [“/usr/bin/bash”]
